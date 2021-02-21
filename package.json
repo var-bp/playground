@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android:phone": "yarn run android:phone:emulator & ( sleep 30 && react-native run-android )",
+    "android:phone": "yarn run android:phone:emulator & ( sleep 32 && react-native run-android )",
     "android:phone:emulator": "/Users/bopo/Library/Android/sdk/emulator/emulator -avd Pixel_4_API_30 -wipe-data",
     "ios": "yarn run ios:emulator:erase && react-native run-ios --simulator='iPhone 12'",
     "ios:emulator:erase": "xcrun simctl erase 809A1025-E1A1-4A1E-8622-5B96C1A33712",
@@ -34,7 +34,6 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-plugin-react-native": "3.10.0",
     "jest": "26.6.3",
     "metro-react-native-babel-preset": "0.65.1",
     "prettier": "2.2.1",
