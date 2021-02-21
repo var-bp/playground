@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+android/
+ios/
+.idea/
+.vscode/
+package.json
+package-lock.json
+yarn.lock
