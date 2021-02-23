@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android:phone": "yarn run android:phone:emulator & ( sleep 32 && react-native run-android )",
+    "android:phone": "yarn run android:phone:emulator & ( sleep 35 && react-native run-android )",
     "android:phone:emulator": "/Users/bopo/Library/Android/sdk/emulator/emulator -avd Pixel_4_API_30 -wipe-data",
     "ios": "yarn run ios:emulator:erase && react-native run-ios --simulator='iPhone 12'",
     "ios:emulator:erase": "xcrun simctl erase 809A1025-E1A1-4A1E-8622-5B96C1A33712",
