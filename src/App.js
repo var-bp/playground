@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  NativeModules,
-  NativeEventEmitter,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, NativeEventEmitter} from 'react-native';
 import {
   Header,
   LearnMoreLinks,
@@ -16,6 +7,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import GeolocationModule from './modules/Geolocation';
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -62,11 +54,10 @@ const App = () => {
 
   React.useEffect(() => {
     const requestPermissions = async () => {
-      const {GeolocationModule} = NativeModules;
       try {
-        await GeolocationModule.requestAndroidPermissions();
-        const values = await GeolocationModule.getAndroidLocationRequestValues();
-        await GeolocationModule.setAndroidConfiguration({
+        await GeolocationModule.requestPermissions();
+        const values = await GeolocationModule.getLocationRequestValues();
+        await GeolocationModule.setConfiguration({
           interval: 10000,
           fastestInterval: 5000,
           priority: values.PRIORITY_HIGH_ACCURACY,
@@ -85,13 +76,12 @@ const App = () => {
   }, []);
 
   React.useEffect(() => {
-    const {GeolocationModule} = NativeModules;
     let eventListener = null;
     if (isLocationInit) {
       const watchLocation = async () => {
         try {
           const eventEmitter = new NativeEventEmitter(GeolocationModule);
-          const eventName = await GeolocationModule.getAndroidRequestLocationUpdatesJSEventName();
+          const eventName = await GeolocationModule.getRequestLocationUpdatesJSEventName();
           await GeolocationModule.watchLocation();
           eventListener = eventEmitter.addListener(eventName, (event) => {
             setLocation(event);
