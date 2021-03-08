@@ -6,7 +6,8 @@ import {
   View,
   Text,
   StatusBar,
-  // NativeModules,
+  NativeModules,
+  NativeEventEmitter,
 } from 'react-native';
 import {
   Header,
@@ -56,17 +57,76 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
+  const [location, setLocation] = React.useState({});
+  const [isLocationInit, setIsLocationInit] = React.useState(false);
+
   React.useEffect(() => {
-    // NativeModules.GeolocationModule.someMethod();
+    const requestPermissions = async () => {
+      const {GeolocationModule} = NativeModules;
+      try {
+        await GeolocationModule.requestAndroidPermissions();
+        const values = await GeolocationModule.getAndroidLocationRequestValues();
+        await GeolocationModule.setAndroidConfiguration({
+          interval: 10000,
+          fastestInterval: 5000,
+          priority: values.PRIORITY_HIGH_ACCURACY,
+        });
+        setLocation(await GeolocationModule.getCurrentLocation());
+        setIsLocationInit(true);
+      } catch (err) {
+        if (__DEV__) {
+          console.error('App requestPermissions error code:', err.code);
+          console.error('App requestPermissions error message:', err.message);
+        }
+      }
+    };
+
+    requestPermissions();
   }, []);
+
+  React.useEffect(() => {
+    const {GeolocationModule} = NativeModules;
+    let eventListener = null;
+    if (isLocationInit) {
+      const watchLocation = async () => {
+        try {
+          const eventEmitter = new NativeEventEmitter(GeolocationModule);
+          const eventName = await GeolocationModule.getAndroidRequestLocationUpdatesJSEventName();
+          await GeolocationModule.watchLocation();
+          eventListener = eventEmitter.addListener(eventName, (event) => {
+            setLocation(event);
+          });
+        } catch (err) {
+          if (__DEV__) {
+            console.error('App watchLocation error code:', err.code);
+            console.error('App watchLocation error message:', err.message);
+          }
+        }
+      };
+      watchLocation();
+    }
+
+    return () => {
+      if (isLocationInit && eventListener) {
+        GeolocationModule.stopWatchLocation()
+          .then(() => {
+            eventListener.remove();
+          })
+          .catch((err) => {
+            if (__DEV__) {
+              console.error('App stopWatchLocation error code:', err.code);
+              console.error('App stopWatchLocation error message:', err.message);
+            }
+          });
+      }
+    };
+  }, [isLocationInit]);
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
           <Header />
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
@@ -77,8 +137,8 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your
+                edits.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -95,9 +155,7 @@ const App = () => {
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
+              <Text style={styles.sectionDescription}>Read the docs to discover what to do next:</Text>
             </View>
             <LearnMoreLinks />
           </View>

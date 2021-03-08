@@ -3,11 +3,13 @@
     "browser": true,
     "es2021": true
   },
+  "globals": {
+    "__DEV__": true
+  },
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -23,6 +25,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "max-len": ["error", { "code": 120 }]
   }
 }
