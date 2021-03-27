@@ -57,12 +57,12 @@ const App = () => {
       try {
         await GeolocationModule.requestPermissions();
         const values = await GeolocationModule.getLocationRequestValues();
-        await GeolocationModule.setConfiguration({
-          interval: 10000,
-          fastestInterval: 5000,
-          priority: values.PRIORITY_HIGH_ACCURACY,
-        });
-        setLocation(await GeolocationModule.getCurrentLocation());
+        // await GeolocationModule.setConfiguration({
+        //   interval: 10000,
+        //   fastestInterval: 5000,
+        //   priority: values.PRIORITY_HIGH_ACCURACY,
+        // });
+        // setLocation(await GeolocationModule.getCurrentLocation());
         setIsLocationInit(true);
       } catch (err) {
         if (__DEV__) {
@@ -75,42 +75,42 @@ const App = () => {
     requestPermissions();
   }, []);
 
-  React.useEffect(() => {
-    let eventListener = null;
-    if (isLocationInit) {
-      const watchLocation = async () => {
-        try {
-          const eventEmitter = new NativeEventEmitter(GeolocationModule);
-          const eventName = await GeolocationModule.getRequestLocationUpdatesJSEventName();
-          await GeolocationModule.watchLocation();
-          eventListener = eventEmitter.addListener(eventName, (event) => {
-            setLocation(event);
-          });
-        } catch (err) {
-          if (__DEV__) {
-            console.error('App watchLocation error code:', err.code);
-            console.error('App watchLocation error message:', err.message);
-          }
-        }
-      };
-      watchLocation();
-    }
+  // React.useEffect(() => {
+  //   let eventListener = null;
+  //   if (isLocationInit) {
+  //     const watchLocation = async () => {
+  //       try {
+  //         const eventEmitter = new NativeEventEmitter(GeolocationModule);
+  //         const eventName = await GeolocationModule.getRequestLocationUpdatesJSEventName();
+  //         await GeolocationModule.watchLocation();
+  //         eventListener = eventEmitter.addListener(eventName, (event) => {
+  //           setLocation(event);
+  //         });
+  //       } catch (err) {
+  //         if (__DEV__) {
+  //           console.error('App watchLocation error code:', err.code);
+  //           console.error('App watchLocation error message:', err.message);
+  //         }
+  //       }
+  //     };
+  //     watchLocation();
+  //   }
 
-    return () => {
-      if (isLocationInit && eventListener) {
-        GeolocationModule.stopWatchLocation()
-          .then(() => {
-            eventListener.remove();
-          })
-          .catch((err) => {
-            if (__DEV__) {
-              console.error('App stopWatchLocation error code:', err.code);
-              console.error('App stopWatchLocation error message:', err.message);
-            }
-          });
-      }
-    };
-  }, [isLocationInit]);
+  //   return () => {
+  //     if (isLocationInit && eventListener) {
+  //       GeolocationModule.stopWatchLocation()
+  //         .then(() => {
+  //           eventListener.remove();
+  //         })
+  //         .catch((err) => {
+  //           if (__DEV__) {
+  //             console.error('App stopWatchLocation error code:', err.code);
+  //             console.error('App stopWatchLocation error message:', err.message);
+  //           }
+  //         });
+  //     }
+  //   };
+  // }, [isLocationInit]);
 
   return (
     <>

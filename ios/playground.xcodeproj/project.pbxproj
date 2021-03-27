@@ -20,6 +20,7 @@
 		3EE1CE8E18C11435B21B42B3 /* libPods-playground-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A92B5D1FE34753512DDFD9 /* libPods-playground-tvOSTests.a */; };
 		813A574149911EF522EBDB4B /* libPods-playground-playgroundTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00484C61A02D338866A4B6F9 /* libPods-playground-playgroundTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		FB84F450260BA7E400DDDD56 /* RCTGeolocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FB84F432260B91D600DDDD56 /* RCTGeolocationModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F5C8B65F9D421786A407B3E5 /* libPods-playground-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-playground-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB84F431260B91C300DDDD56 /* RCTGeolocationModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTGeolocationModule.h; sourceTree = "<group>"; };
+		FB84F432260B91D600DDDD56 /* RCTGeolocationModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTGeolocationModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 		13B07FAE1A68108700A75B9A /* playground */ = {
 			isa = PBXGroup;
 			children = (
+				FB84F431260B91C300DDDD56 /* RCTGeolocationModule.h */,
+				FB84F432260B91D600DDDD56 /* RCTGeolocationModule.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -194,7 +199,6 @@
 				DE4C45A593CC00B078550C8C /* Pods-playground-tvOSTests.debug.xcconfig */,
 				DFC6F16787F6EE048167CF62 /* Pods-playground-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -568,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB84F450260BA7E400DDDD56 /* RCTGeolocationModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

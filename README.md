@@ -1,6 +1,15 @@
 The best React Native libraries, tools, tutorials, articles and more<br/>
 https://github.com/jondot/awesome-react-native
 
+RN android
+https://github.com/facebook/react-native/tree/master/ReactAndroid/src/main/java/com/facebook/react/bridge
+
+RN ios
+https://github.com/facebook/react-native/tree/master/React
+
+Comparing iOS and Android
+https://savvyapps.com/blog/how-to-start-android-development-with-an-ios-background
+
 Where does local.properties go for android project?<br/>
 https://stackoverflow.com/a/54234228
 
