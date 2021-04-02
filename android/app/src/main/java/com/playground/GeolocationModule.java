@@ -107,17 +107,15 @@ public class GeolocationModule extends ReactContextBaseJavaModule {
         return values;
     }
 
-    @ReactMethod
-    public void getAndroidRequestLocationUpdatesJSEventName(final Promise promise) {
-        if (REQUEST_LOCATION_UPDATES_JS_EVENT_NAME != null) {
-            promise.resolve(REQUEST_LOCATION_UPDATES_JS_EVENT_NAME);
-        } else {
-            promise.reject("PROPERTY_NULL", "Cannot get property REQUEST_LOCATION_UPDATES_JS_EVENT_NAME");
-        }
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        constants.put("REQUEST_LOCATION_UPDATES_JS_EVENT_NAME", REQUEST_LOCATION_UPDATES_JS_EVENT_NAME);
+        return constants;
     }
 
     @ReactMethod
-    public void requestAndroidPermissions(final Promise promise) {
+    public void requestPermissions(final Promise promise) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             final PermissionsModule permissionsModule = getReactApplicationContext().getNativeModule(PermissionsModule.class);
 
@@ -152,7 +150,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setAndroidConfiguration(final ReadableMap map) {
+    public void setConfiguration(final ReadableMap map) {
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(map.getInt("interval"));
         locationRequest.setFastestInterval(map.getInt("fastestInterval"));
@@ -160,7 +158,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getAndroidLocationRequestValues(final Promise promise) {
+    public void getLocationConstants(final Promise promise) {
         try {
             WritableMap values = new WritableNativeMap();
             values.putInt("PRIORITY_BALANCED_POWER_ACCURACY", LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
@@ -174,7 +172,7 @@ public class GeolocationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getCurrentLocation(final Promise promise) {
+    public void getLastKnownLocation(final Promise promise) {
         Activity activity = getCurrentActivity();
         try {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(activity);

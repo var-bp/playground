@@ -1,13 +1,14 @@
 import {NativeModules} from 'react-native';
 
 const androidGeolocation = {
-  requestPermissions: NativeModules.GeolocationModule.requestAndroidPermissions,
-  getLocationRequestValues: NativeModules.GeolocationModule.getAndroidLocationRequestValues,
-  setConfiguration: NativeModules.GeolocationModule.setAndroidConfiguration,
-  getCurrentLocation: NativeModules.GeolocationModule.getCurrentLocation,
-  getRequestLocationUpdatesJSEventName: NativeModules.GeolocationModule.getAndroidRequestLocationUpdatesJSEventName,
+  requestPermissions: NativeModules.GeolocationModule.requestPermissions,
+  getLocationConstants: NativeModules.GeolocationModule.getLocationConstants,
+  setConfiguration: NativeModules.GeolocationModule.setConfiguration,
+  getLastKnownLocation: NativeModules.GeolocationModule.getLastKnownLocation,
+  commonConstants: NativeModules.GeolocationModule.getConstants(),
   watchLocation: NativeModules.GeolocationModule.watchLocation,
   stopWatchLocation: NativeModules.GeolocationModule.stopWatchLocation,
+  nativeModule: NativeModules.GeolocationModule,
 };
 
 export default androidGeolocation;
