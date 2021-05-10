@@ -23,3 +23,15 @@ https://medium.com/flawless-app-stories/change-splash-screen-in-ios-app-for-dumm
 https://www.avanderlee.com/xcode/launch-screen/
 https://www.youtube.com/watch?v=QVKwbLvk8Sg&feature=emb_logo
 https://youtu.be/3y23UebzCYw
+
+To do<br/>
+https://medium.com/hellogetsafe/how-we-added-an-animated-splash-screen-to-our-react-native-app-a7600eaa54e8
+https://tech.oyorooms.com/75-percent-reduction-in-our-android-app-download-size-1ca15d6eb305
+https://medium.com/idopterlabs/fixing-the-most-annoying-rn-bug-i-know-7e2ecf79c53f
+https://aditya01.hashnode.dev/how-to-make-your-react-native-app-more-performant
+https://javascript.plainenglish.io/how-to-safeguard-your-react-native-application-from-getting-hacked-522da508f9fa
+
+
+https://developer.android.com/topic/libraries/architecture/workmanager
+https://stackoverflow.com/questions/16155032/android-running-a-background-task-every-15-minutes-even-when-application-is-n
+https://reactnative.dev/docs/headless-js-android
