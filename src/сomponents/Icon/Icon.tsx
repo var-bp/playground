@@ -43,8 +43,8 @@ const renderIcon = (
 
 interface IconProps {
   name: string;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
   color: string;
   backgroundColor?: string;
 }
