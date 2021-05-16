@@ -18,9 +18,11 @@ const verticalScale = (size: number): number =>
 const moderateScale = (size: number, factor = 0.5): number =>
   size + (scale(size) - size) * factor;
 
-const adaptSize = (size: number): number =>
-  PixelRatio.roundToNearestPixel(
-    moderateScale(size) * PixelRatio.getFontScale(),
-  );
+const adaptSize = (size: number, isFontSize = false): number => {
+  const fontScale = isFontSize ? 1 : PixelRatio.getFontScale();
+  const result = moderateScale(size) * fontScale;
+  // check if a number has a decimal place/is a whole number
+  return result % 1 !== 0 ? PixelRatio.roundToNearestPixel(result) : result;
+};
 
 export default adaptSize;

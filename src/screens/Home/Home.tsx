@@ -1,58 +1,52 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {ScrollView, Text, useColorScheme, View} from 'react-native';
 import {
-  Colors,
   DebugInstructions,
   Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import useOrientation from '../../hooks/useOrientation';
 import ScreenWithStatusBar from '../../сomponents/ScreenWithStatusBar';
-import styles from './Home.style';
+import {styles, responsiveStyles, colorStyles} from './Home.style';
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+const Section: React.FC<{title: string}> = memo(({children, title}) => {
+  const colorScheme = useColorScheme();
+
   return (
-    <View style={styles.sectionContainer}>
+    <View style={responsiveStyles.getSectionContainerSizes()}>
       <Text
         style={[
           styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
+          responsiveStyles.getSectionTitleSizes(),
+          colorStyles.getSectionContainerColors(colorScheme),
         ]}>
         {title}
       </Text>
       <Text
         style={[
           styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
+          responsiveStyles.getSectionDescriptionSizes(),
+          colorStyles.getSectionDescriptionColors(colorScheme),
         ]}>
         {children}
       </Text>
     </View>
   );
-};
+});
 
 const Home = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  useOrientation();
+
+  const colorScheme = useColorScheme();
 
   return (
     <ScreenWithStatusBar>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={{
-          backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-        }}>
+        style={colorStyles.getScrollViewColors(colorScheme)}>
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View style={colorStyles.getViewColors(colorScheme)}>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.

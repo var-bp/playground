@@ -5,8 +5,8 @@ import Svg, {Path} from 'react-native-svg';
 
 const renderIcon = (
   name: string,
-  width: string,
-  height: string,
+  width: number,
+  height: number,
   color: string,
 ) => {
   switch (name) {

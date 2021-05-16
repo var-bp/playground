@@ -36,6 +36,4 @@ https://github.com/jondot/awesome-react-native#components
 https://reactnative.dev/docs/headless-js-android
 https://uxplanet.org/essential-animated-effects-in-mobile-apps-86ebd82cdc74
 
-
-FontScaling?
 https://dev.to/easybuoy/combining-stack-tab-drawer-navigations-in-react-native-with-react-navigation-5-da

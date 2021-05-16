@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {memo, useMemo} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {colorStyles} from './ScreenWithStatusBar.style';
 
-const ScreenWithStatusBar: React.FC = ({children}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+const ScreenWithStatusBar: React.FC = memo(({children}) => {
+  const colorScheme = useColorScheme();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const isDarkMode: boolean = useMemo(
+    () => colorScheme === 'dark',
+    [colorScheme],
+  );
+
+  const barStyle: 'light-content' | 'dark-content' = useMemo(
+    () => (isDarkMode ? 'light-content' : 'dark-content'),
+    [isDarkMode],
+  );
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <SafeAreaView style={colorStyles.getSafeAreaViewColors(colorScheme)}>
+      <StatusBar barStyle={barStyle} />
       {children}
     </SafeAreaView>
   );
-};
+});
 
 export default ScreenWithStatusBar;
