@@ -24,16 +24,27 @@ https://www.avanderlee.com/xcode/launch-screen/
 https://www.youtube.com/watch?v=QVKwbLvk8Sg&feature=emb_logo
 https://youtu.be/3y23UebzCYw
 
-To do<br/>
+Animated Splash Screen
 https://medium.com/hellogetsafe/how-we-added-an-animated-splash-screen-to-our-react-native-app-a7600eaa54e8
+
+Android app download size
 https://tech.oyorooms.com/75-percent-reduction-in-our-android-app-download-size-1ca15d6eb305
+
+ScrollView bug
 https://medium.com/idopterlabs/fixing-the-most-annoying-rn-bug-i-know-7e2ecf79c53f
+
+Performance !
 https://aditya01.hashnode.dev/how-to-make-your-react-native-app-more-performant
+https://github.com/mrousavy/react-native-multithreading
+
+Security
 https://javascript.plainenglish.io/how-to-safeguard-your-react-native-application-from-getting-hacked-522da508f9fa
 
-TO DO !!!!!<br/>
-https://github.com/jondot/awesome-react-native#components
+Background task !
 https://reactnative.dev/docs/headless-js-android
-https://uxplanet.org/essential-animated-effects-in-mobile-apps-86ebd82cdc74
 
 https://dev.to/easybuoy/combining-stack-tab-drawer-navigations-in-react-native-with-react-navigation-5-da
+https://around25.com/blog/handling-offline-mode-in-react-native/
+https://blog.logrocket.com/the-complete-guide-to-react-native-webview/
+
+https://github.com/jondot/awesome-react-native#components

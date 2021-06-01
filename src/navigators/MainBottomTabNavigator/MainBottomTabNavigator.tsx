@@ -1,5 +1,5 @@
 import React from 'react';
-import {useColorScheme} from 'react-native';
+import {useColorScheme, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import NewsStackNavigator from '../../navigators/NewsStackNavigator';
@@ -71,13 +71,14 @@ const MainBottomTabNavigator = (props: DrawerScreenProps<{}>) => {
           TINT_COLOR_SECONDARY,
         ),
         style: {
-          height: adaptSize(95),
+          height: adaptSize(Platform.OS === 'ios' ? 95 : 75),
         },
         labelPosition: 'below-icon',
         labelStyle: {
           fontFamily: FONT_FAMILY_PRIMARY,
           fontWeight: FONT_WEIGHT_REGULAR,
           fontSize: adaptSize(12, true),
+          marginBottom: Platform.OS === 'ios' ? 0 : adaptSize(10),
         },
       }}>
       <Tab.Screen name={ROUTES.HOME} component={Home} />
