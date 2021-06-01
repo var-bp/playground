@@ -11,10 +11,19 @@ const Stack = createNativeStackNavigator();
 
 const NewsStackNavigator = () => (
   <Stack.Navigator initialRouteName={ROUTES.NEWS__NEWS_LIST}>
-    <Stack.Screen name={ROUTES.NEWS__NEWS_LIST} component={NewsList} />
+    <Stack.Screen
+      name={ROUTES.NEWS__NEWS_LIST}
+      component={NewsList}
+      options={{
+        headerShown: false,
+      }}
+    />
     <Stack.Screen
       name={ROUTES.NEWS__NEWS_LIST__NEWS_DETAIL}
       component={NewsDetail}
+      options={{
+        headerShown: false,
+      }}
     />
   </Stack.Navigator>
 );
