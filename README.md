@@ -48,3 +48,5 @@ https://around25.com/blog/handling-offline-mode-in-react-native/
 https://blog.logrocket.com/the-complete-guide-to-react-native-webview/
 
 https://github.com/jondot/awesome-react-native#components
+
+https://blog.bam.tech/developer-news/one-pressable-to-rule-them-all
